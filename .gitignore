@@ -30,3 +30,8 @@
 *.exe
 *.out
 *.app
+
+_build/
+_msvc_build/
+cmake-build-debug/
+build/
