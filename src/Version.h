@@ -2,6 +2,7 @@
 #include <string>
 #include <tuple>
 
+
 class Version
 {
 public:
@@ -57,22 +58,6 @@ std::ostream& operator<<(std::ostream& out, const Version& v)
 Version operator"" _v(const char* str,std::size_t /*len*/)
 {
     std::uint8_t major = 0, minor = 0, patch = 0;
-    sscanf_s(str, "%hhu.%hhu.%hhu", &major, &minor, &patch);
+    std::sscanf(str, "%hhu.%hhu.%hhu", &major, &minor, &patch);
     return Version(major, minor, patch);
-}
-
-// A custom literal to make it easy to create Version objects like 1.2_v
-Version operator"" _v(long double f)
-{
-    auto f_string = std::to_string(f);
-    std::uint8_t major = 0, minor = 0;
-    sscanf_s(f_string.c_str(), "%hhu.%hhu", &major, &minor);
-    return Version(major, minor, 0);
-}
-
-// A custom literal to make it easy to create Version objects like 1.2_v
-Version operator"" _v(unsigned long long major)
-{
-
-    return Version(static_cast<uint8_t>(major), 0, 0);
 }

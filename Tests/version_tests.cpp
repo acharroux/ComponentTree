@@ -1,6 +1,5 @@
 #include <gtest/gtest.h>
 
-// Make sure to include the header for the Version class
 #include "Version.h"
 
 TEST(VersionTest, Constructor)
@@ -41,19 +40,6 @@ TEST(VersionTest, LiteralString)
     EXPECT_EQ(3, v4.getPatch());
 }
 
-
-TEST(VersionTest, LiteralFloat)
-{
-    Version v2 = 1_v;
-    EXPECT_EQ(1, v2.getMajor());
-    EXPECT_EQ(0, v2.getMinor());
-    EXPECT_EQ(0, v2.getPatch());
-
-    Version v3 = 1.2_v;
-    EXPECT_EQ(1, v3.getMajor());
-    EXPECT_EQ(2, v3.getMinor());
-    EXPECT_EQ(0, v3.getPatch());
-}
 
 TEST(VersionTest, ComparisonOperators)
 {
