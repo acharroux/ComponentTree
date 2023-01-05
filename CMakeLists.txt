@@ -1,7 +1,11 @@
 cmake_minimum_required(VERSION 3.18)
 
 # The project name
-project(ComponentTree)
+project(ComponentTree LANGUAGES CXX)
+
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
 
 if (MSVC)
     # warning level 4 and all warnings as errors
@@ -15,6 +19,7 @@ endif()
 if (CMAKE_VERSION VERSION_GREATER_EQUAL "3.24.0")
     cmake_policy(SET CMP0135 NEW)
 endif()
+enable_testing()
 
 add_subdirectory(third_party/google_test)
 add_subdirectory(src)
